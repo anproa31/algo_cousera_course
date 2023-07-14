@@ -2,27 +2,60 @@
 using namespace std;
 typedef long long int ll;
 
-
-ll findNthFibonaci (ll n) {
-    ll arr[10000];
-    arr[0] = 0;
-    arr[1] = 1;
-    ll i;
-    for(i = 2; i <= n; i++) {
-        arr[i] = (arr[i-1] + arr[i-2]);
+//module có tính chu kì 
+//tính chu kì đó theo m
+ll pisano(ll m)
+{
+    ll prev = 0;
+    ll curr = 1;
+    ll res = 0;
+ 
+    for(ll i = 0; i < m * m; i++)
+    {
+        ll temp = 0;
+        temp = curr;
+        curr = (prev + curr) % m;
+        prev = temp;
+ 
+        if (prev == 0 && curr == 1)
+            res = i + 1;
     }
-    return arr[n];
+    return res;
 }
+
+ll fibonacciModulo(ll n, ll m)
+{
+     
+    // Getting the period
+    ll pisanoPeriod = pisano(m);
+ 
+    n = n % pisanoPeriod;
+ 
+    ll prev = 0;
+    ll curr = 1;
+ 
+    if (n == 0)
+        return 0;
+    else if (n == 1)
+        return 1;
+ 
+    for(ll i = 0; i < n - 1; i++)
+    {
+        ll temp = 0;
+        temp = curr;
+        curr = (prev + curr) % m;
+        prev = temp;
+    }
+    return curr % m;
+}
+
 
 
 
 
 int main() {
-    // ll n;
-    // cin >> n;
-for (int i = 0; i <= 100; i++)
-{
-    cout << i << " " << findNthFibonaci(i) << endl;
-}
+    ll n, m;
+    cin >> n >> m;
+    cout << fibonacciModulo(n, m)<< endl;
 
 }

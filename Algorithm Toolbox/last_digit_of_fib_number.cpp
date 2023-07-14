@@ -1,20 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
+typedef long long int ll;
 
-long long findNthFibonaci (long long n) {
-    long long arr[n+2];
+ll findNthFibonaci (ll arr[], ll n) {
     arr[0] = 0;
     arr[1] = 1;
-    long long i;
+    ll i;
     for(i = 2; i <= n; i++) {
         arr[i] = (arr[i-1] + arr[i-2]) % 10;
     }
     return arr[n];
 }
 
+int findLastDigit(int n)
+{
+    ll f[60] = {0};
+    findNthFibonaci(f, 60);
+    return f[n % 60];
+}
+
 
 int main() {
-    long long n;
+    ll n;
     cin >> n;
-    cout << findNthFibonaci(n) << endl;
+    cout << findLastDigit(n)<< endl;
 }

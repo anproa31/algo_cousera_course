@@ -11,12 +11,6 @@ long long findNthFibonaci (long long n) {
     return arr[n];
 }
 
-long long GCDs(long long a, long long b) {
-    if(b == 0) {
-        return a;
-    }
-    return GCDs(b, a%b);
-}
 
 int main() {
     int n;

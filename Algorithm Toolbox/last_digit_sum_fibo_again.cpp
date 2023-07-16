@@ -25,6 +25,6 @@ int main() {
     std::cin >> n;
     std::cin >> m;
 
-    std::cout << (calc_fib(n) + calc_fib(m - 1)) % 10<< '\n';
+    std::cout << (calc_fib(n) - calc_fib(m - 1)) % 10<< '\n';
     return 0;
 }

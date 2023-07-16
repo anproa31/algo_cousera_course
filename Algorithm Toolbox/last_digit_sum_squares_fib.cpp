@@ -9,7 +9,7 @@ long long calc_fib(long long n) {
     fib[1]=1;
     int res = 1;
     for(int i = 2; i<=n;i++){
-        fib[i] = (fib[i-1]%10 + fib[i-2]%10)%10;
+        fib[i] = (fib[i] * (fib[i-1] + fib[i]))%10;
     }
     if(fib[n] == 0){
         return 9;

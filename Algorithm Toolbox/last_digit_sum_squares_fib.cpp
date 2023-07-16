@@ -1,26 +1,21 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-long long calc_fib(long long n) {
+long long fib(long long n) {
+  vector<int> last_digits = {0, 1};
 
-    n = (n+2)%60;
-    int fib[n+1];
-    fib[0]=0;
-    fib[1]=1;
-    int res = 1;
-    for(int i = 2; i<=n;i++){
-        fib[i] = (fib[i] * (fib[i-1] + fib[i]))%10;
-    }
-    if(fib[n] == 0){
-        return 9;
-    }
-    return (fib[n]%10-1);
+  for (int i = 2; i <= 60; i++) {
+    last_digits.push_back((last_digits[i - 1] + last_digits[i - 2]) % 10);
+  }
+
+  return last_digits[n % 60];
 }
 
 int main() {
     long long n = 0;
     std::cin >> n;
 
-    std::cout << (calc_fib(n) * calc_fib(n+1)) % 10 << '\n';
+    std::cout << (fib(n) % 10 * fib(n+1) % 10) % 10 << '\n';
     return 0;
 }

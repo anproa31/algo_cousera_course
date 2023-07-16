@@ -1,32 +1,26 @@
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
-typedef long long int ll;
 
-ll findNthFibonaci (ll arr[], ll n) {
-    arr[0] = 0;
-    arr[1] = 1;
-    ll i;
-    for(i = 2; i <= n; i++) {
-        arr[i] = (arr[i-1] + arr[i-2]) % 10;
+long long calc_fib(long long n) {
+
+    n = (n+2)%60;
+    int fib[n+1];
+    fib[0]=0;
+    fib[1]=1;
+    int res = 1;
+    for(int i = 2; i<=n;i++){
+        fib[i] = (fib[i-1]%10 + fib[i-2]%10)%10;
     }
-    return arr[n];
-}
-
-int findLastDigit(int n)
-{
-    ll f[60] = {0};
-    findNthFibonaci(f, 60);
-    return f[n % 60];
+    if(fib[n] == 0){
+        return 9;
+    }
+    return (fib[n]%10-1);
 }
 
 int main() {
-    ll m,n;
-    ll arr[10000];
-    ll sum = 0;
-    cin >> m >> n;
-    for(ll i = m; i <= n; i++) {
-        sum += findLastDigit(i);
-    }
-    cout << sum % 10 << endl;
+    long long n = 0;
+    std::cin >> n;
+
+    std::cout << calc_fib(n) << '\n';
     return 0;
 }

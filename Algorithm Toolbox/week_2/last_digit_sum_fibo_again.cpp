@@ -1,5 +1,6 @@
 // https://stackoverflow.com/questions/38950579/fibonacci-sum-of-large-numbersonly-last-digit-to-be-printed
-
+// https://www.nayuki.io/page/fast-fibonacci-algorithms
+//http://web.archive.org/web/20130208161623/http://fusharblog.com/solving-linear-recurrence-for-programming-contest/
 #include <iostream>
 using namespace std;
 
